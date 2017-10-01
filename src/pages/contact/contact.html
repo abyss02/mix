@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Authentication
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+                  <!-- Login -->
+
+<div id="topButtons">
+  <button block ion-button (click)="signIn()">Sign In</button>
+
+  <button block ion-button (click)="register()">Register</button>
+</div>
+
+
+                  <!-- Social Media Login -->
+  
+
+  <button ion-button (click)="login('facebook')" *ngIf="!provider.loggedin"> <ion-icon name="logo-facebook"></ion-icon>&nbsp;Login With Facebook</button>
+  
+  <button ion-button (click)="login('google')" *ngIf="!provider.loggedin"> <ion-icon name="logo-google"></ion-icon>&nbsp;Login With Google</button>
+  
+  <button ion-button (click)="login('twitter')" *ngIf="!provider.loggedin"><ion-icon name="logo-twitter"></ion-icon>&nbsp;Login With Twitter</button>
+
+
+
+<ion-card *ngIf="provider.loggedin">
+  <img src="{{ provider.profilePicture }}"/>
+  <ion-card-content>
+    <ion-card-title>
+      {{ provider.name }}
+    </ion-card-title>>
+  <p style="text-align: center:">{{ provider.email }}</p>
+  </ion-card-content>
+</ion-card>
+
+  <button ion-button (click)="logout()" *ngIf="provider.loggedin">Logout</button>
+
+</ion-content>
+
